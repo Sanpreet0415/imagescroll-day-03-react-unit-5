@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Gallery</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .header {
+        text-align: center;
+        padding: 20px;
+        background-color: #ffffff;
+      }
+
+      .header span {
+        font-size: 16px;
+        margin: 0 15px;
+        color: #333;
+        text-decoration: none;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .box {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        width: calc(25% - 20px); /* Adjust width to fit in 4 boxes per row */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .box:hover {
+        transform: scale(1.03);
+      }
+
+      .box img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .box-content {
+        padding: 15px;
+        text-align: center;
+      }
+
+      .box-content .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .box-content .price {
+        color: #007bff;
+        font-size: 14px;
+      }
+
+      /* Media Queries */
+      @media (max-width: 1200px) {
+        .box {
+          width: calc(33.33% - 20px); /* 3 boxes per row */
+        }
+      }
+
+      @media (max-width: 800px) {
+        .box {
+          width: calc(50% - 20px); /* 2 boxes per row */
+        }
+      }
+
+      @media (max-width: 500px) {
+        .box {
+          width: calc(100% - 20px); /* 1 box per row */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      function App() {
+        const items = [
+          { id: 1, title: 'Random Title 1', price: '$19.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+1' },
+          { id: 2, title: 'Random Title 2', price: '$24.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+2' },
+          { id: 3, title: 'Random Title 3', price: '$29.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+3' },
+          { id: 4, title: 'Random Title 4', price: '$34.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+4' },
+          { id: 5, title: 'Random Title 5', price: '$39.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+5' },
+          { id: 6, title: 'Random Title 6', price: '$44.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+6' },
+          { id: 7, title: 'Random Title 7', price: '$49.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+7' },
+          { id: 8, title: 'Random Title 8', price: '$54.99', imgSrc: 'https://via.placeholder.com/600x300?text=Image+8' },
+        ];
+
+        return (
+          <div>
+            <div className="header">
+              <span>@Home</span>
+              <span>WGalleryy</span>
+              <span>M%Contact</span>
+              <span>@About</span>
+            </div>
+            <div className="container">
+              {items.map(item => (
+                <div key={item.id} className="box">
+                  <img src={item.imgSrc} alt={item.title} />
+                  <div className="box-content">
+                    <div className="title">{item.title}</div>
+                    <div className="price">{item.price}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
